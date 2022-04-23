@@ -1,3 +1,5 @@
+from cgi import test
+from re import U
 import unittest
 from user import User
 
@@ -29,6 +31,16 @@ class TestUser(unittest.TestCase):
         """
         self.new_user.save_user()
         self.assertEqual(len(User.user_list),1)
+
+    def test_save_multiple_users(self):
+        """
+        test_save_multiple_users checks to see if multiple user objects can be added to user list
+        """
+        self.new_user.save_user()
+        test_user = User("test username","test password")
+        test_user.save_user()
+        self.assertEqual(len(User.user_list),2)
+
 
 if __name__ == "__main__":
     unittest.main()
