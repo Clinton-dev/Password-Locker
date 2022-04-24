@@ -13,7 +13,7 @@ class TestCredential(unittest.TestCase):
         """
         Set up method to run before each test case
         """
-        self.new_credential = Credential("twitter","pass123","john.doe@ymail")
+        self.new_credential = Credential("twitter","Billy joe","pass123","john.doe@ymail")
 
     def tearDown(self):
         """
@@ -27,6 +27,7 @@ class TestCredential(unittest.TestCase):
         """
 
         self.assertEqual(self.new_credential.name,"twitter")
+        self.assertEqual(self.new_credential.username, "Billy joe")
         self.assertEqual(self.new_credential.password, "pass123")
         self.assertEqual(self.new_credential.email, "john.doe@ymail")
 
@@ -43,7 +44,7 @@ class TestCredential(unittest.TestCase):
             objects to our credentials_list
             '''
             self.new_credential.save_credential()
-            test_credential = Credential("Test","user","pass")
+            test_credential = Credential("Test","user","pass","test@email.com")
             test_credential.save_credential()
             self.assertEqual(len(Credential.credentials_list),2)
 
@@ -59,7 +60,7 @@ class TestCredential(unittest.TestCase):
         test_delete_credential to test if we can remove a credential from our credential list
         '''
         self.new_credential.save_credential()
-        test_credential = Credential("Test","user","pass")
+        test_credential = Credential("Test","user","pass","test@email.io")
         test_credential.save_credential()
 
         self.new_credential.delete_credential()
@@ -71,7 +72,7 @@ class TestCredential(unittest.TestCase):
         '''
 
         self.new_credential.save_credential()
-        test_credential = Credential("Test3","user","pass")
+        test_credential = Credential("Test3","user","pass","test3@email.com")
         test_credential.save_credential()
 
         credential_exists = Credential.credential_exist("Test3")
@@ -86,7 +87,7 @@ class TestCredential(unittest.TestCase):
         self.new_credential.save_credential()
         Credential.copy_credential("twitter")
 
-        self.assertEqual(self.new_credential,pyperclip.paste())
+        self.assertEqual(self.new_credential.name,pyperclip.paste())
 
     def test_find_credential_by_name(self):
         '''
@@ -94,7 +95,7 @@ class TestCredential(unittest.TestCase):
         '''
 
         self.new_credential.save_credential()
-        test_credential = Credential("Test4","user","123pass")
+        test_credential = Credential("Test4","user","123pass","test4@email.com")
         test_credential.save_credential()
 
         found_credential = Credential.find_by_name("Test4")

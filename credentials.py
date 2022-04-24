@@ -7,7 +7,7 @@ class Credential:
 
     credentials_list = []
 
-    def __init__(self,name, password, email):
+    def __init__(self,name, username, password, email):
         """
         __init__ method defines property of credentail object
 
@@ -18,6 +18,7 @@ class Credential:
         """
 
         self.name = name
+        self.username = username
         self.password = password
         self.email = email
 
@@ -74,4 +75,5 @@ class Credential:
     @classmethod
     def copy_credential(cls,name):
         contact_found = Credential.find_by_name(name)
-        pyperclip.copy(contact_found)
+        pyperclip.copy(contact_found.name)
+
