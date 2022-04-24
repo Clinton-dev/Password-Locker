@@ -24,3 +24,17 @@ class Credential:
         save_credential saves credential in credential list
         """
         Credential.credentials_list.append(self)
+
+    def delete_credential(self):
+        '''
+        delete_credential method deletes a saved credentail from the credentials_list
+        '''
+        Credential.credentials_list.remove(self)
+
+
+    @classmethod
+    def display_credentials(cls):
+        '''
+        method that returns a list of all credentials saved
+        '''
+        return cls.credentials_list

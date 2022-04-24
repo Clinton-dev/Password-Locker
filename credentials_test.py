@@ -3,7 +3,7 @@ from credentials import Credential
 
 class TestCredential(unittest.TestCase):
     """
-    Test class that defines test case for User class behaviors
+    Test class that defines test case for credential class behaviors
 
     Args:
         unittest.TestCase: TestCase class that helps in creating test cases
@@ -18,7 +18,7 @@ class TestCredential(unittest.TestCase):
         """
         tearDown method cleans up after each test case
         """
-        Credential.credential_list = []
+        Credential.credentials_list = []
 
     def test_init(self):
         """
@@ -36,12 +36,33 @@ class TestCredential(unittest.TestCase):
         self.new_credential.save_credential()
         self.assertEqual(len(Credential.credentials_list),1)
 
+    def test_save_multiple_credentials(self):
+            '''
+            test_save_multiple_credentials to check if we can save multiple credentials
+            objects to our credentials_list
+            '''
+            self.new_credential.save_credential()
+            test_credential = Credential("Test","user","pass")
+            test_credential.save_credential()
+            self.assertEqual(len(Credential.credentials_list),2)
+
     def test_display_all_credentials(self):
         '''
         method that returns a list of all credentials saved
         '''
 
         self.assertEqual(Credential.display_credentials(),Credential.credentials_list)
+
+    def test_delete_credential(self):
+            '''
+            test_delete_credential to test if we can remove a credential from our credential list
+            '''
+            self.new_credential.save_credential()
+            test_credential = Credential("Test","user","pass")
+            test_credential.save_credential()
+
+            self.new_credential.delete_credential()
+            self.assertEqual(len(Credential.credentials_list),1)
 
 
 if __name__ == "__main__":
