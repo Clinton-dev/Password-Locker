@@ -14,7 +14,7 @@ def save_user(user):
     '''
     Function to save contact
     '''
-    user.save_contact()
+    user.save_user()
 
 def del_user(user):
     '''
