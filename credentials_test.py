@@ -54,15 +54,29 @@ class TestCredential(unittest.TestCase):
         self.assertEqual(Credential.display_credentials(),Credential.credentials_list)
 
     def test_delete_credential(self):
-            '''
-            test_delete_credential to test if we can remove a credential from our credential list
-            '''
-            self.new_credential.save_credential()
-            test_credential = Credential("Test","user","pass")
-            test_credential.save_credential()
+        '''
+        test_delete_credential to test if we can remove a credential from our credential list
+        '''
+        self.new_credential.save_credential()
+        test_credential = Credential("Test","user","pass")
+        test_credential.save_credential()
 
-            self.new_credential.delete_credential()
-            self.assertEqual(len(Credential.credentials_list),1)
+        self.new_credential.delete_credential()
+        self.assertEqual(len(Credential.credentials_list),1)
+
+    def test_credential_exists(self):
+        '''
+        test to check if we can return a Boolean  if we cannot find the credential.
+        '''
+
+        self.new_credential.save_credential()
+        test_credential = Credential("Test3","user","pass")
+        test_credential.save_credential()
+
+        credential_exists = Credential.credential_exist("Test3")
+
+        self.assertTrue(credential_exists)
+
 
 
 if __name__ == "__main__":

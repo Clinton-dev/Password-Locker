@@ -38,3 +38,18 @@ class Credential:
         method that returns a list of all credentials saved
         '''
         return cls.credentials_list
+
+    @classmethod
+    def credential_exist(cls,name):
+        '''
+        Method that checks if a credential exists from the credential list.
+        Args:
+            name: name of credential to search if it exists
+        Returns :
+            Boolean: True or false depending if the credential exists
+        '''
+        for credential in cls.credentials_list:
+            if credential.name == name:
+                    return True
+
+        return False
