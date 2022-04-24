@@ -1,5 +1,6 @@
 import unittest
 import pyperclip
+
 from credentials import Credential
 
 class TestCredential(unittest.TestCase):
@@ -101,6 +102,12 @@ class TestCredential(unittest.TestCase):
         found_credential = Credential.find_by_name("Test4")
 
         self.assertEqual(found_credential.name,test_credential.name)
+
+    def test_generate_random_pass(self):
+        """
+        test to check if random password is generated
+        """
+        self.assertNotEqual(Credential.gen_rand_pass(self),Credential.gen_rand_pass(self))
 
 
 if __name__ == "__main__":

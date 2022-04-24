@@ -1,4 +1,6 @@
 import pyperclip
+from password_generator import PasswordGenerator
+
 
 class Credential:
     """
@@ -33,6 +35,14 @@ class Credential:
         delete_credential method deletes a saved credentail from the credentials_list
         '''
         Credential.credentials_list.remove(self)
+
+    def gen_rand_pass(self):
+        """
+        generate random password for user credential
+        """
+        password = PasswordGenerator()
+        password.generate()
+        return password
 
 
     @classmethod
