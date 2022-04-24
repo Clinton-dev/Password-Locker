@@ -55,3 +55,8 @@ class Credential:
                     return True
 
         return False
+
+    @classmethod
+    def copy_credential(cls,name):
+        contact_found = Credential.find_by_name(name)
+        pyperclip.copy(contact_found)
