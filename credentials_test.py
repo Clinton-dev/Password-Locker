@@ -1,4 +1,5 @@
 import unittest
+import pyperclip
 from credentials import Credential
 
 class TestCredential(unittest.TestCase):
@@ -76,6 +77,16 @@ class TestCredential(unittest.TestCase):
         credential_exists = Credential.credential_exist("Test3")
 
         self.assertTrue(credential_exists)
+
+    def test_copy_credential(self):
+        '''
+        Test to confirm that we are copying the credential from a found credential
+        '''
+
+        self.new_credential.save_credential()
+        Credential.copy_credential("twitter")
+
+        self.assertEqual(self.new_credential,pyperclip.paste())
 
 
 
