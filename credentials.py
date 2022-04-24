@@ -57,6 +57,21 @@ class Credential:
         return False
 
     @classmethod
+    def find_by_name(cls,name):
+        '''
+        Method that takes in a name and returns a credentail that matches that name.
+
+        Args:
+            name: name of the credential to search for
+        Returns :
+            Credential of user that matches the name.
+        '''
+
+        for credential in cls.credentials_list:
+            if credential.name == name:
+                return credential
+
+    @classmethod
     def copy_credential(cls,name):
         contact_found = Credential.find_by_name(name)
         pyperclip.copy(contact_found)

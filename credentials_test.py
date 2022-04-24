@@ -88,6 +88,18 @@ class TestCredential(unittest.TestCase):
 
         self.assertEqual(self.new_credential,pyperclip.paste())
 
+    def test_find_credential_by_name(self):
+        '''
+        test to check if we can find a credential by credential name and display information
+        '''
+
+        self.new_credential.save_credential()
+        test_credential = Credential("Test4","user","123pass")
+        test_credential.save_credential()
+
+        found_credential = Credential.find_by_name("Test4")
+
+        self.assertEqual(found_credential.name,test_credential.name)
 
 
 if __name__ == "__main__":
