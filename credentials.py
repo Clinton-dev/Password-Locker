@@ -9,7 +9,7 @@ class Credential:
 
     credentials_list = []
 
-    def __init__(self,name, username, password, email):
+    def __init__(self,name, username, password, email,creator):
         """
         __init__ method defines property of credentail object
 
@@ -17,12 +17,14 @@ class Credential:
             username: new credential name
             password: new credentail password
             email: new credential email
+            creator: user who created the credential
         """
 
         self.name = name
         self.username = username
         self.password = password
         self.email = email
+        self.creator = creator
 
     def save_credential(self):
         """
@@ -36,7 +38,7 @@ class Credential:
         '''
         Credential.credentials_list.remove(self)
 
-    def gen_rand_pass(self):
+    def gen_rand_pass():
         """
         generate random password for user credential
         """

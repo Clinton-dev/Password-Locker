@@ -14,7 +14,7 @@ class TestCredential(unittest.TestCase):
         """
         Set up method to run before each test case
         """
-        self.new_credential = Credential("twitter","Billy joe","pass123","john.doe@ymail")
+        self.new_credential = Credential("twitter","Billy joe","pass123","john.doe@ymail","user")
 
     def tearDown(self):
         """
@@ -31,6 +31,7 @@ class TestCredential(unittest.TestCase):
         self.assertEqual(self.new_credential.username, "Billy joe")
         self.assertEqual(self.new_credential.password, "pass123")
         self.assertEqual(self.new_credential.email, "john.doe@ymail")
+        self.assertEqual(self.new_credential.creator, "user")
 
     def test_save_credential(self):
         """
@@ -45,7 +46,7 @@ class TestCredential(unittest.TestCase):
             objects to our credentials_list
             '''
             self.new_credential.save_credential()
-            test_credential = Credential("Test","user","pass","test@email.com")
+            test_credential = Credential("Test","user","pass","test@email.com","user1")
             test_credential.save_credential()
             self.assertEqual(len(Credential.credentials_list),2)
 
@@ -61,7 +62,7 @@ class TestCredential(unittest.TestCase):
         test_delete_credential to test if we can remove a credential from our credential list
         '''
         self.new_credential.save_credential()
-        test_credential = Credential("Test","user","pass","test@email.io")
+        test_credential = Credential("Test","user","pass","test@email.io","user")
         test_credential.save_credential()
 
         self.new_credential.delete_credential()
@@ -73,7 +74,7 @@ class TestCredential(unittest.TestCase):
         '''
 
         self.new_credential.save_credential()
-        test_credential = Credential("Test3","user","pass","test3@email.com")
+        test_credential = Credential("Test3","user","pass","test3@email.com","user")
         test_credential.save_credential()
 
         credential_exists = Credential.credential_exist("Test3")
@@ -96,7 +97,7 @@ class TestCredential(unittest.TestCase):
         '''
 
         self.new_credential.save_credential()
-        test_credential = Credential("Test4","user","123pass","test4@email.com")
+        test_credential = Credential("Test4","user","123pass","test4@email.com","user")
         test_credential.save_credential()
 
         found_credential = Credential.find_by_name("Test4")
@@ -107,7 +108,7 @@ class TestCredential(unittest.TestCase):
         """
         test to check if random password is generated
         """
-        self.assertNotEqual(Credential.gen_rand_pass(self),Credential.gen_rand_pass(self))
+        self.assertNotEqual(Credential.gen_rand_pass(),Credential.gen_rand_pass())
 
 
 if __name__ == "__main__":
