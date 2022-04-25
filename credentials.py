@@ -43,8 +43,7 @@ class Credential:
         generate random password for user credential
         """
         password = PasswordGenerator()
-        password.generate()
-        return password
+        return password.generate()
 
 
     @classmethod
