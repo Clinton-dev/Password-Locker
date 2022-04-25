@@ -9,7 +9,7 @@
 
 ## Description
 
-Simple Python App that creates new contacts with properties. Touches on Test Driven Development using unittest (Python test framework).
+An amazing application that will help you in managing your numerous account details including your passwords and even generate new passwords for you. Test Driven Development approach using unittest (Python test framework) is used in the creation of the application.
 
 ## Technologies Used
 
@@ -28,21 +28,27 @@ Simple Python App that creates new contacts with properties. Touches on Test Dri
 ## Behaviour Driven Development
 
 1. Displays Intro Message to user
-    - OUTPUT: "Hello Welcome to your contact list. What is your name?"
-   - INPUT: "Samora"
-   - OUTPUT: "Hello Samora. what would you like to do?"
+   - OUTPUT: "Create an account - ca or login into an existing acc -lo?"
 2. Enter Short Code
-   - INPUT: "cc"
-   - INPUT: "first_name", "last_name", "phone-number", "email"
-   - OUTPUT: "New Contact Samora Yommie created" - Create new contact by providing required properties
+   - INPUT: "ca"
+   - INPUT: "name", "password"
+   - OUTPUT: "New Contact User test created"
+
 3. Enter Short Code
+   - INPUT: "lo"
+   - INPUT: "name", "password"
+   - OUTPUT: "login successful"
+
+4. Displays Intro Message to user
+   - OUTPUT: "Create a credential - cd, display existing credential -dc, delete credential- dl, search credential -fc?"
+5. Enter Short Code
    - INPUT: "dc"
-   - OUTPUT: "Enter the number you want to search for" - Prompts user to enter number to search for
-   - OUTPUT: "Samora Yommie .....0712345678" - Displays existing contacts
-4. Enter Short Code
+   - OUTPUT: "Enter the name of credential account you want to search for" - Prompts user to enter name to search for
+   - OUTPUT: "twitter .....username: twitter_username" - Displays existing credentials
+6. Enter Short Code
    - INPUT: "fc"
-   - INPUT: "0712345678" - Search by Phone Number
-   - OUTPUT: "Phone number.......0712345678, Email address....... samora.y@adzumi.co.ke" - Returns contact if exists
+   - INPUT: "twitter" - Search by credential acc name
+   - OUTPUT: "Name.......twitter, Username....... username, Email address....... user.@test.com, Password....... password," - Returns credential if exists
 
 
 
